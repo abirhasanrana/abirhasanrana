@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rana's personal website — Learning, Growing, Building.">
+  <title>Rana — Personal Website</title>
+  <style>
+    :root{
+      --bg:#071521; --card:#0d2231; --text:#f7fbff; --muted:#b7c5cf;
+      --accent:#2f9cff; --border:rgba(255,255,255,.12);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:#071521;line-height:1.6}
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:10;height:70px;
+      display:flex;align-items:center;justify-content:space-between;padding:0 7%;
+      background:rgba(5,18,29,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)
+    }
+    .brand{font-size:22px;font-weight:800;letter-spacing:.2px}
+    .brand span{color:var(--accent)}
+    nav ul{display:flex;gap:26px;list-style:none}
+    nav a{color:#fff;text-decoration:none;font-size:14px;opacity:.9}
+    nav a:hover{color:var(--accent)}
+    .hero{
+      min-height:100vh;display:flex;align-items:center;padding:120px 7% 70px;
+      position:relative;overflow:hidden;
+      background:
+        linear-gradient(90deg,rgba(3,15,25,.92) 0%,rgba(3,15,25,.68) 45%,rgba(3,15,25,.25) 100%),
+        url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=2000&q=85") center/cover;
+    }
+    .hero:after{content:"";position:absolute;inset:auto 0 0;height:100px;background:linear-gradient(transparent,#071521)}
+    .hero-content{max-width:650px;position:relative;z-index:1}
+    .eyebrow{color:var(--accent);font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:13px;margin-bottom:12px}
+    h1{font-size:clamp(52px,9vw,100px);line-height:.95;margin-bottom:20px}
+    .tagline{font-size:clamp(19px,3vw,29px);font-weight:600;margin-bottom:18px}
+    .tagline span{color:var(--accent)}
+    .intro{color:var(--muted);font-size:17px;max-width:540px}
+    .buttons{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+    .btn{padding:13px 22px;border-radius:999px;text-decoration:none;font-weight:700;border:1px solid var(--border);color:#fff}
+    .btn.primary{background:var(--accent);border-color:var(--accent)}
+    .btn:hover{transform:translateY(-2px)}
+    section{padding:90px 7%;max-width:1150px;margin:auto}
+    section h2{font-size:38px;margin-bottom:12px}
+    .section-sub{color:var(--muted);margin-bottom:32px}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px}
+    .card p{color:var(--muted)}
+    .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+    .chip{border:1px solid var(--border);padding:7px 12px;border-radius:999px;color:#dbe8ef;font-size:14px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .project h3,.goal h3{margin:10px 0 6px}
+    .project p,.goal p{color:var(--muted);font-size:15px}
+    .icon{font-size:30px}
+    .contact{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .contact a{color:#fff;text-decoration:none;display:block;padding:13px 0;border-bottom:1px solid var(--border)}
+    footer{text-align:center;padding:30px 7%;color:#8fa3af;border-top:1px solid var(--border)}
+    @media(max-width:800px){
+      nav{padding:0 5%} nav ul{display:none}
+      .hero{padding-left:6%;padding-right:6%}
+      section{padding:70px 6%}
+      .about-grid,.contact{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      h1{font-size:64px}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="brand">△ <span>Rana</span></div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#journey">Journey</a></li>
+      <li><a href="#goals">Goals</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="eyebrow">My Personal Website</div>
+        <h1>Hello, I'm<br><span style="color:var(--accent)">Abir Hasan Rana</span></h1>
+        <div class="tagline">Learning <span>•</span> Growing <span>•</span> Building</div>
+        <p class="intro">Welcome to my personal space on the web. Here I share who I am, what I'm learning, my goals, and the journey I'm building step by step.</p>
+        <div class="buttons">
+          <a class="btn primary" href="#about">About Me →</a>
+          <a class="btn" href="#journey">My Journey</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="eyebrow">About Me</div>
+      <h2>Who I Am</h2>
+      <p class="section-sub">A little introduction.</p>
+      <div class="about-grid">
+        <div class="card">
+          <p>Hi, I'm Rana. I'm on a journey of learning new things, building useful skills, exploring new places, and working toward a better future.</p>
+          <div class="chips">
+            <span class="chip">Japan</span><span class="chip">Technology</span><span class="chip">Travel</span>
+            <span class="chip">Business</span><span class="chip">Books</span><span class="chip">Self Development</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>My Philosophy</h3>
+          <p style="margin-top:10px">Small steps matter. I want to keep learning, become more independent, and build my future with consistency.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="journey">
+      <div class="eyebrow">My Journey</div>
+      <h2>Steps I'm Taking</h2>
+      <p class="section-sub">Every small step counts.</p>
+      <div class="grid">
+        <div class="card"><div class="icon">🇯🇵</div><h3>Japanese Language</h3><p>Learning Japanese and working toward higher language levels.</p></div>
+        <div class="card"><div class="icon">📚</div><h3>New Skills</h3><p>Learning practical skills that can help me in work and life.</p></div>
+        <div class="card"><div class="icon">🌏</div><h3>Travel</h3><p>Exploring new places and experiencing different cultures.</p></div>
+      </div>
+    </section>
+
+    <section id="goals">
+      <div class="eyebrow">My Goals</div>
+      <h2>Where I'm Heading</h2>
+      <p class="section-sub">Goals can change and grow. This page will grow with me.</p>
+      <div class="grid">
+        <div class="card goal"><div class="icon">🎯</div><h3>Build My Future</h3><p>Develop useful skills and create better opportunities.</p></div>
+        <div class="card goal"><div class="icon">🇯🇵</div><h3>Japan</h3><p>Continue learning Japanese and explore future opportunities.</p></div>
+        <div class="card goal"><div class="icon">💡</div><h3>Personal Growth</h3><p>Become more confident, disciplined, independent, and capable.</p></div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="eyebrow">Projects</div>
+      <h2>Ideas & Projects</h2>
+      <p class="section-sub">Things I'm planning or working on.</p>
+      <div class="grid">
+        <div class="card project"><div class="icon">🌱</div><h3>Seed Business</h3><p>A future online business idea focused on seeds and useful products.</p></div>
+        <div class="card project"><div class="icon">🗾</div><h3>Japanese Learning</h3><p>Documenting my Japanese learning journey and resources.</p></div>
+        <div class="card project"><div class="icon">✈️</div><h3>Travel</h3><p>Sharing future travel experiences, photos, and stories.</p></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="eyebrow">Get In Touch</div>
+      <h2>Let's Connect</h2>
+      <p class="section-sub">Add your real contact links here when you're ready.</p>
+      <div class="contact">
+        <div class="card">
+          <a href="mailto:your@email.com">✉️ your@email.com</a>
+          <a href="#">📘 Facebook</a>
+          <a href="#">💬 WhatsApp / Telegram</a>
+          <a href="#">📷 Instagram</a>
+        </div>
+        <div class="card">
+          <h3>Keep in touch</h3>
+          <p style="margin-top:10px">This is your website. You can update the text, photos, links, goals, and projects anytime.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 Rana. All rights reserved.</footer>
+</body>
+</html>
