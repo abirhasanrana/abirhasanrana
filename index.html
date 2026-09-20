@@ -1,845 +1,936 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Abir Hasan Rana — Dream. Learn. Grow. Build.">
-  <title>Abir Hasan Rana | Personal Website</title>
-
-  <style>
-    :root{
-      --bg:#030b16;
-      --bg2:#071525;
-      --card:rgba(255,255,255,.055);
-      --text:#f5f9ff;
-      --muted:#9fb0c3;
-      --blue:#20bfff;
-      --purple:#8b5cf6;
-      --border:rgba(255,255,255,.12);
-      --shadow:0 20px 60px rgba(0,0,0,.35);
-    }
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    body{
-      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,
-      "Segoe UI",Roboto,Arial,sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.6;
-      overflow-x:hidden;
-    }
-
-    body::before{
-      content:"";
-      position:fixed;
-      inset:-20%;
-      z-index:-5;
-      background:
-        radial-gradient(circle at 15% 20%,rgba(32,191,255,.12),transparent 25%),
-        radial-gradient(circle at 85% 30%,rgba(139,92,246,.12),transparent 25%),
-        radial-gradient(circle at 50% 90%,rgba(20,184,166,.08),transparent 25%);
-      filter:blur(30px);
-    }
-
-    /* NAVBAR */
-
-    nav{
-      position:fixed;
-      top:0;
-      left:0;
-      right:0;
-      z-index:100;
-      height:72px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:0 7%;
-      background:rgba(3,11,22,.72);
-      backdrop-filter:blur(18px);
-      border-bottom:1px solid var(--border);
-    }
-
-    .brand{
-      font-size:21px;
-      font-weight:800;
-      letter-spacing:.3px;
-    }
-
-    .brand span{
-      color:var(--blue);
-    }
-
-    nav ul{
-      display:flex;
-      gap:27px;
-      list-style:none;
-    }
-
-    nav a{
-      color:#dce8f5;
-      text-decoration:none;
-      font-size:14px;
-      transition:.25s;
-    }
-
-    nav a:hover{
-      color:var(--blue);
-    }
-
-    /* HERO */
-
-    .hero{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      padding:130px 7% 80px;
-      position:relative;
-      overflow:hidden;
-
-      background:
-        linear-gradient(
-          90deg,
-          rgba(2,10,20,.97) 0%,
-          rgba(2,10,20,.82) 38%,
-          rgba(2,10,20,.35) 100%
-        ),
-        url("https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=2200&q=90")
-        center/cover;
-    }
-
-    .hero::after{
-      content:"";
-      position:absolute;
-      left:0;
-      right:0;
-      bottom:0;
-      height:130px;
-      background:linear-gradient(transparent,var(--bg));
-    }
-
-    .hero-content{
-      max-width:650px;
-      position:relative;
-      z-index:2;
-      animation:fadeUp 1s ease;
-    }
-
-    .eyebrow{
-      color:var(--blue);
-      font-size:13px;
-      font-weight:800;
-      letter-spacing:2px;
-      text-transform:uppercase;
-      margin-bottom:12px;
-    }
-
-    h1{
-      font-size:clamp(48px,8vw,92px);
-      line-height:.98;
-      letter-spacing:-3px;
-      margin-bottom:20px;
-    }
-
-    .gradient{
-      background:linear-gradient(90deg,#ffffff,#35c7ff,#9b7cff);
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-    }
-
-    .tagline{
-      font-size:clamp(20px,3vw,28px);
-      font-weight:700;
-      margin-bottom:18px;
-    }
-
-    .tagline span{
-      color:var(--blue);
-    }
-
-    .intro{
-      color:var(--muted);
-      font-size:17px;
-      max-width:580px;
-    }
-
-    .buttons{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      margin-top:30px;
-    }
-
-    .btn{
-      display:inline-block;
-      padding:13px 22px;
-      border-radius:999px;
-      text-decoration:none;
-      color:white;
-      font-weight:750;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.05);
-      transition:.3s;
-    }
-
-    .btn.primary{
-      background:linear-gradient(90deg,var(--blue),var(--purple));
-      border:none;
-      box-shadow:0 10px 30px rgba(32,191,255,.18);
-    }
-
-    .btn:hover{
-      transform:translateY(-4px);
-      box-shadow:0 12px 35px rgba(0,0,0,.3);
-    }
-
-    .socials{
-      display:flex;
-      gap:16px;
-      margin-top:25px;
-    }
-
-    .socials a{
-      width:40px;
-      height:40px;
-      display:grid;
-      place-items:center;
-      border-radius:50%;
-      color:white;
-      text-decoration:none;
-      background:rgba(255,255,255,.07);
-      border:1px solid var(--border);
-      transition:.3s;
-    }
-
-    .socials a:hover{
-      transform:translateY(-4px);
-      border-color:var(--blue);
-      color:var(--blue);
-    }
-
-    /* SECTIONS */
-
-    section{
-      max-width:1150px;
-      margin:auto;
-      padding:95px 7%;
-    }
-
-    section h2{
-      font-size:40px;
-      margin-bottom:10px;
-    }
-
-    .section-sub{
-      color:var(--muted);
-      margin-bottom:35px;
-    }
-
-    /* CARDS */
-
-    .card{
-      padding:27px;
-      border-radius:22px;
-      border:1px solid var(--border);
-      background:var(--card);
-      backdrop-filter:blur(15px);
-      box-shadow:var(--shadow);
-      transition:.35s;
-    }
-
-    .card:hover{
-      transform:translateY(-7px);
-      border-color:rgba(32,191,255,.45);
-      background:rgba(255,255,255,.075);
-    }
-
-    .card p{
-      color:var(--muted);
-    }
-
-    /* ABOUT */
-
-    .about-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:22px;
-    }
-
-    .profile-box{
-      overflow:hidden;
-      padding:0;
-    }
-
-    .profile-box img{
-      width:100%;
-      height:340px;
-      object-fit:cover;
-      display:block;
-    }
-
-    .profile-text{
-      padding:25px;
-    }
-
-    .chips{
-      display:flex;
-      gap:9px;
-      flex-wrap:wrap;
-      margin-top:20px;
-    }
-
-    .chip{
-      padding:7px 12px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      color:#dce8f5;
-      font-size:13px;
-    }
-
-    /* INFO */
-
-    .info-list{
-      margin-top:15px;
-    }
-
-    .info-item{
-      display:flex;
-      gap:14px;
-      padding:12px 0;
-      border-bottom:1px solid var(--border);
-    }
-
-    .info-icon{
-      font-size:20px;
-    }
-
-    .info-item strong{
-      display:block;
-      font-size:14px;
-    }
-
-    .info-item small{
-      color:var(--muted);
-    }
-
-    /* JOURNEY */
-
-    .timeline{
-      position:relative;
-      max-width:1000px;
-      margin:auto;
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:18px;
-    }
-
-    .timeline::before{
-      content:"";
-      position:absolute;
-      top:43px;
-      left:8%;
-      right:8%;
-      height:2px;
-      background:linear-gradient(90deg,var(--blue),var(--purple));
-      opacity:.5;
-    }
-
-    .step{
-      position:relative;
-      z-index:2;
-      text-align:center;
-    }
-
-    .step-icon{
-      width:58px;
-      height:58px;
-      margin:0 auto 16px;
-      display:grid;
-      place-items:center;
-      border-radius:50%;
-      font-size:25px;
-      background:#071525;
-      border:2px solid var(--blue);
-      box-shadow:0 0 25px rgba(32,191,255,.15);
-    }
-
-    .step h3{
-      font-size:17px;
-      margin-bottom:5px;
-    }
-
-    .step p{
-      color:var(--muted);
-      font-size:14px;
-    }
-
-    /* SKILLS */
-
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:18px;
-    }
-
-    .icon{
-      font-size:32px;
-      margin-bottom:10px;
-    }
-
-    .grid h3{
-      margin-bottom:7px;
-    }
-
-    /* CONTACT */
-
-    .contact{
-      text-align:center;
-    }
-
-    .contact .buttons{
-      justify-content:center;
-    }
-
-    /* FOOTER */
-
-    footer{
-      text-align:center;
-      padding:30px 7%;
-      color:#708397;
-      border-top:1px solid var(--border);
-    }
-
-    /* ANIMATION */
-
-    @keyframes fadeUp{
-      from{
-        opacity:0;
-        transform:translateY(25px);
-      }
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
-    }
-
-    /* MOBILE */
-
-    @media(max-width:850px){
-
-      nav{
-        padding:0 5%;
-      }
-
-      nav ul{
-        display:none;
-      }
-
-      .hero{
-        padding:120px 6% 80px;
-      }
-
-      section{
-        padding:70px 6%;
-      }
-
-      .about-grid{
-        grid-template-columns:1fr;
-      }
-
-      .grid{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .timeline{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .timeline::before{
-        display:none;
-      }
-
-      h1{
-        letter-spacing:-2px;
-      }
-    }
-
-    @media(max-width:520px){
-
-      .grid{
-        grid-template-columns:1fr;
-      }
-
-      .timeline{
-        grid-template-columns:1fr;
-        gap:30px;
-      }
-
-      section h2{
-        font-size:32px;
-      }
-
-      .hero{
-        min-height:95vh;
-      }
-
-      .btn{
-        width:100%;
-        text-align:center;
-      }
-
-      .socials{
-        justify-content:center;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Abir Hasan Rana — Dream, Learn, Grow, Build.">
+<title>Abir Hasan Rana | Personal Website</title>
+
+<style>
+:root{
+  --bg:#030914;
+  --bg2:#071525;
+  --text:#f5f9ff;
+  --muted:#9eafc2;
+  --blue:#22c7ff;
+  --purple:#8b5cf6;
+  --card:rgba(255,255,255,.055);
+  --border:rgba(255,255,255,.12);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,
+  "Segoe UI",Roboto,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+/* Animated background */
+
+body::before,
+body::after{
+  content:"";
+  position:fixed;
+  width:450px;
+  height:450px;
+  border-radius:50%;
+  filter:blur(100px);
+  opacity:.13;
+  z-index:-2;
+  pointer-events:none;
+}
+
+body::before{
+  background:var(--blue);
+  top:-180px;
+  left:-180px;
+  animation:floatBlue 12s ease-in-out infinite alternate;
+}
+
+body::after{
+  background:var(--purple);
+  right:-180px;
+  bottom:-180px;
+  animation:floatPurple 14s ease-in-out infinite alternate;
+}
+
+@keyframes floatBlue{
+  from{transform:translate(0,0)}
+  to{transform:translate(100px,80px)}
+}
+
+@keyframes floatPurple{
+  from{transform:translate(0,0)}
+  to{transform:translate(-100px,-80px)}
+}
+
+/* NAVIGATION */
+
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:100;
+  height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 7%;
+  background:rgba(3,9,20,.72);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+}
+
+.brand{
+  font-size:21px;
+  font-weight:800;
+}
+
+.brand span{
+  color:var(--blue);
+}
+
+nav ul{
+  display:flex;
+  gap:27px;
+  list-style:none;
+}
+
+nav a{
+  color:#dce8f5;
+  text-decoration:none;
+  font-size:14px;
+  transition:.25s;
+}
+
+nav a:hover{
+  color:var(--blue);
+}
+
+/* HERO */
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding:130px 7% 80px;
+  position:relative;
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(2,8,18,.96) 0%,
+      rgba(2,8,18,.82) 42%,
+      rgba(2,8,18,.35) 100%
+    ),
+    url("https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=2200&q=90")
+    center/cover;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:150px;
+  background:linear-gradient(transparent,var(--bg));
+}
+
+.hero-content{
+  max-width:720px;
+  position:relative;
+  z-index:2;
+  animation:heroIn 1s ease;
+}
+
+@keyframes heroIn{
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.eyebrow{
+  color:var(--blue);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:13px;
+}
+
+h1{
+  font-size:clamp(48px,8vw,92px);
+  line-height:.98;
+  letter-spacing:-3px;
+  margin-bottom:20px;
+}
+
+.gradient{
+  background:linear-gradient(90deg,#fff,#42d4ff,#a78bfa);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.tagline{
+  font-size:clamp(20px,3vw,28px);
+  font-weight:700;
+  margin-bottom:17px;
+}
+
+.tagline span{
+  color:var(--blue);
+}
+
+.intro{
+  color:var(--muted);
+  font-size:17px;
+  max-width:590px;
+}
+
+.buttons{
+  display:flex;
+  gap:13px;
+  flex-wrap:wrap;
+  margin-top:30px;
+}
+
+.btn{
+  display:inline-block;
+  padding:13px 23px;
+  border-radius:999px;
+  text-decoration:none;
+  color:white;
+  font-weight:750;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.055);
+  transition:.3s;
+}
+
+.btn.primary{
+  background:linear-gradient(90deg,var(--blue),var(--purple));
+  border:none;
+  box-shadow:0 10px 35px rgba(34,199,255,.18);
+}
+
+.btn:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 35px rgba(0,0,0,.3);
+}
+
+.socials{
+  display:flex;
+  gap:12px;
+  margin-top:24px;
+}
+
+.socials a{
+  width:40px;
+  height:40px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  color:white;
+  text-decoration:none;
+  background:rgba(255,255,255,.07);
+  border:1px solid var(--border);
+  transition:.3s;
+}
+
+.socials a:hover{
+  transform:translateY(-4px);
+  border-color:var(--blue);
+  color:var(--blue);
+}
+
+/* SECTIONS */
+
+section{
+  max-width:1150px;
+  margin:auto;
+  padding:95px 7%;
+}
+
+section h2{
+  font-size:40px;
+  margin-bottom:10px;
+}
+
+.section-sub{
+  color:var(--muted);
+  margin-bottom:35px;
+}
+
+/* CARDS */
+
+.card{
+  padding:27px;
+  border-radius:22px;
+  border:1px solid var(--border);
+  background:var(--card);
+  backdrop-filter:blur(15px);
+  transition:.35s;
+}
+
+.card:hover{
+  transform:translateY(-7px);
+  border-color:rgba(34,199,255,.45);
+  background:rgba(255,255,255,.075);
+}
+
+.card p{
+  color:var(--muted);
+}
+
+/* ABOUT */
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+}
+
+.profile-box{
+  padding:0;
+  overflow:hidden;
+}
+
+.profile-box img{
+  width:100%;
+  height:340px;
+  object-fit:cover;
+  display:block;
+}
+
+.profile-text{
+  padding:25px;
+}
+
+.chips{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+
+.chip{
+  padding:7px 12px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  color:#dce8f5;
+  font-size:13px;
+}
+
+/* INFO */
+
+.info-list{
+  margin-top:18px;
+}
+
+.info-item{
+  display:flex;
+  gap:13px;
+  padding:12px 0;
+  border-bottom:1px solid var(--border);
+}
+
+.info-icon{
+  font-size:20px;
+}
+
+.info-item strong{
+  display:block;
+  font-size:14px;
+}
+
+.info-item small{
+  color:var(--muted);
+}
+
+/* JOURNEY */
+
+.timeline{
+  position:relative;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.timeline::before{
+  content:"";
+  position:absolute;
+  top:30px;
+  left:10%;
+  right:10%;
+  height:2px;
+  background:linear-gradient(90deg,var(--blue),var(--purple));
+  opacity:.5;
+}
+
+.step{
+  position:relative;
+  z-index:2;
+  text-align:center;
+}
+
+.step-icon{
+  width:60px;
+  height:60px;
+  margin:0 auto 15px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:#071525;
+  border:2px solid var(--blue);
+  box-shadow:0 0 25px rgba(34,199,255,.18);
+  font-size:25px;
+}
+
+.step h3{
+  font-size:17px;
+  margin-bottom:5px;
+}
+
+.step p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* GRID */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.icon{
+  font-size:32px;
+  margin-bottom:10px;
+}
+
+.grid h3{
+  margin-bottom:7px;
+}
+
+/* CONTACT */
+
+.contact{
+  text-align:center;
+}
+
+.contact .buttons{
+  justify-content:center;
+}
+
+/* FOOTER */
+
+footer{
+  text-align:center;
+  padding:30px 7%;
+  color:#708397;
+  border-top:1px solid var(--border);
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+  nav{
+    height:64px;
+    padding:0 20px;
+  }
+
+  nav ul{
+    display:none;
+  }
+
+  .hero{
+    min-height:100svh;
+    padding:105px 22px 70px;
+    background-position:62% center;
+  }
+
+  .hero-content{
+    width:100%;
+  }
+
+  h1{
+    font-size:clamp(43px,13vw,62px);
+    line-height:1;
+    letter-spacing:-2px;
+  }
+
+  .tagline{
+    font-size:20px;
+    line-height:1.4;
+  }
+
+  .intro{
+    font-size:15px;
+    line-height:1.7;
+  }
+
+  .buttons{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:11px;
+    margin-top:25px;
+  }
+
+  .btn{
+    width:100%;
+    text-align:center;
+  }
+
+  .socials{
+    justify-content:center;
+  }
+
+  section{
+    padding:70px 20px;
+  }
+
+  section h2{
+    font-size:32px;
+  }
+
+  .about-grid{
+    grid-template-columns:1fr;
+  }
+
+  .grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .timeline{
+    grid-template-columns:1fr 1fr;
+    gap:30px 15px;
+  }
+
+  .timeline::before{
+    display:none;
+  }
+
+  .step{
+    text-align:center;
+  }
+
+  .profile-box img{
+    height:300px;
+  }
+}
+
+@media(max-width:520px){
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .timeline{
+    grid-template-columns:1fr;
+    gap:22px;
+  }
+
+  .step{
+    display:grid;
+    grid-template-columns:55px 1fr;
+    column-gap:15px;
+    align-items:center;
+    text-align:left;
+  }
+
+  .step-icon{
+    grid-row:span 2;
+    width:55px;
+    height:55px;
+    margin:0;
+  }
+
+  section{
+    padding:65px 20px;
+  }
+
+  section h2{
+    font-size:30px;
+  }
+
+  .profile-box img{
+    height:280px;
+  }
+
+  .chip{
+    font-size:12px;
+  }
+
+  footer{
+    padding:25px 18px;
+    font-size:12px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- NAVIGATION -->
+<!-- NAVIGATION -->
 
-  <nav>
-    <div class="brand">△ <span>Abir</span></div>
+<nav>
+  <div class="brand">△ <span>Abir</span></div>
 
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#journey">Journey</a></li>
-      <li><a href="#goals">Goals</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#journey">Journey</a></li>
+    <li><a href="#goals">Goals</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
 
-  <!-- HERO -->
+<!-- HERO -->
 
-  <main>
+<main>
 
-    <section class="hero" id="home">
+<section class="hero" id="home">
 
-      <div class="hero-content">
+  <div class="hero-content">
 
-        <div class="eyebrow">👋 My Personal Website</div>
+    <div class="eyebrow">👋 My Personal Website</div>
 
-        <h1>
-          Hello, I'm<br>
-          <span class="gradient">Abir Hasan Rana</span>
-        </h1>
+    <h1>
+      Hello, I'm<br>
+      <span class="gradient">Abir Hasan Rana</span>
+    </h1>
 
-        <div class="tagline">
-          Dream <span>•</span> Learn <span>•</span> Grow <span>•</span> Build
-        </div>
+    <div class="tagline">
+      Dream <span>•</span> Learn <span>•</span> Grow <span>•</span> Build
+    </div>
 
-        <p class="intro">
-          Welcome to my personal space on the web. I'm learning Japanese,
-          developing new skills, exploring new experiences and working
-          step by step toward my future goals.
+    <p class="intro">
+      Welcome to my personal space on the web. I'm learning Japanese,
+      developing new skills, exploring new experiences and working
+      step by step toward my future goals.
+    </p>
+
+    <div class="buttons">
+      <a class="btn primary" href="#about">About Me →</a>
+      <a class="btn" href="#journey">My Journey</a>
+    </div>
+
+    <div class="socials">
+      <a href="mailto:mdranatoday1@gmail.com">✉</a>
+      <a href="https://www.facebook.com/share/1EMh3kju32/" target="_blank">f</a>
+      <a href="https://www.instagram.com/abir_hasan_rana99" target="_blank">◎</a>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+  <div class="eyebrow">About Me</div>
+
+  <h2>Who I Am</h2>
+
+  <p class="section-sub">
+    A little about me, my interests and the person I'm becoming.
+  </p>
+
+  <div class="about-grid">
+
+    <div class="card profile-box">
+
+      <img src="rana.jpg" alt="Abir Hasan Rana">
+
+      <div class="profile-text">
+
+        <p>
+          Hello! I'm Abir Hasan Rana. I'm a young learner from Bangladesh
+          who is interested in learning new skills, exploring new
+          opportunities and building a better future.
         </p>
 
-        <div class="buttons">
-          <a class="btn primary" href="#about">About Me →</a>
-          <a class="btn" href="#journey">My Journey</a>
-        </div>
-
-        <div class="socials">
-          <a href="mailto:mdranatoday1@gmail.com">✉</a>
-          <a href="https://www.facebook.com/share/1EMh3kju32/" target="_blank">f</a>
-          <a href="https://www.instagram.com/abir_hasan_rana99" target="_blank">◎</a>
+        <div class="chips">
+          <span class="chip">🇯🇵 Japan</span>
+          <span class="chip">💻 Technology</span>
+          <span class="chip">🌏 Travel</span>
+          <span class="chip">💼 Business</span>
+          <span class="chip">📚 Books</span>
+          <span class="chip">🚀 Self Development</span>
         </div>
 
       </div>
 
-    </section>
+    </div>
 
 
-    <!-- ABOUT -->
+    <div class="card">
 
-    <section id="about">
+      <h3>My Philosophy</h3>
 
-      <div class="eyebrow">About Me</div>
-      <h2>Who I Am</h2>
-
-      <p class="section-sub">
-        A little about me, my interests and the person I'm becoming.
+      <p style="margin-top:12px">
+        I believe small steps create big changes. I want to keep
+        learning, become more independent, step outside my comfort
+        zone and build my future with consistency.
       </p>
 
-      <div class="about-grid">
+      <div class="info-list">
 
-        <div class="card profile-box">
-
-          <img src="rana.jpg" alt="Abir Hasan Rana">
-
-          <div class="profile-text">
-
-            <p>
-              Hello! I'm Abir Hasan Rana. I'm a young learner from Bangladesh
-              who is interested in learning new skills, exploring new
-              opportunities and building a better future.
-            </p>
-
-            <div class="chips">
-              <span class="chip">🇯🇵 Japan</span>
-              <span class="chip">💻 Technology</span>
-              <span class="chip">🌏 Travel</span>
-              <span class="chip">💼 Business</span>
-              <span class="chip">📚 Books</span>
-              <span class="chip">🚀 Self Development</span>
-            </div>
-
+        <div class="info-item">
+          <div class="info-icon">🎓</div>
+          <div>
+            <strong>Education</strong>
+            <small>HSC</small>
           </div>
-
         </div>
 
-
-        <div class="card">
-
-          <h3>My Philosophy</h3>
-
-          <p style="margin-top:12px">
-            I believe small steps create big changes. I want to keep
-            learning, become more independent, step outside my comfort
-            zone and build my future with consistency.
-          </p>
-
-          <div class="info-list">
-
-            <div class="info-item">
-              <div class="info-icon">🎂</div>
-              <div>
-                <strong>Age</strong>
-                <small>21</small>
-              </div>
-            </div>
-
-            <div class="info-item">
-              <div class="info-icon">📍</div>
-              <div>
-                <strong>From</strong>
-                <small>Nandail, Mymensingh</small>
-              </div>
-            </div>
-
-            <div class="info-item">
-              <div class="info-icon">🎓</div>
-              <div>
-                <strong>Education</strong>
-                <small>HSC</small>
-              </div>
-            </div>
-
-            <div class="info-item">
-              <div class="info-icon">🇯🇵</div>
-              <div>
-                <strong>Current Focus</strong>
-                <small>Japanese Language & Future Goals</small>
-              </div>
-            </div>
-
+        <div class="info-item">
+          <div class="info-icon">🇯🇵</div>
+          <div>
+            <strong>Current Focus</strong>
+            <small>Japanese Language</small>
           </div>
+        </div>
 
+        <div class="info-item">
+          <div class="info-icon">🚀</div>
+          <div>
+            <strong>Focus</strong>
+            <small>Learning & Personal Growth</small>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">🌏</div>
+          <div>
+            <strong>Future</strong>
+            <small>International Opportunities</small>
+          </div>
         </div>
 
       </div>
 
-    </section>
+    </div>
+
+  </div>
+
+</section>
 
 
-    <!-- JOURNEY -->
+<!-- JOURNEY -->
 
-    <section id="journey">
+<section id="journey">
 
-      <div class="eyebrow">My Journey</div>
-      <h2>Steps I'm Taking</h2>
+  <div class="eyebrow">My Journey</div>
 
-      <p class="section-sub">
-        One step at a time — learning, improving and moving forward.
+  <h2>Steps I'm Taking</h2>
+
+  <p class="section-sub">
+    One step at a time — learning, improving and moving forward.
+  </p>
+
+  <div class="timeline">
+
+    <div class="step">
+      <div class="step-icon">🎓</div>
+      <h3>Education</h3>
+      <p>Building my foundation</p>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">🇯🇵</div>
+      <h3>Japanese</h3>
+      <p>Learning Japanese</p>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">📚</div>
+      <h3>New Skills</h3>
+      <p>Growing every day</p>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">✈️</div>
+      <h3>Future</h3>
+      <p>Working toward my goals</p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- GOALS -->
+
+<section id="goals">
+
+  <div class="eyebrow">My Goals</div>
+
+  <h2>Where I'm Heading</h2>
+
+  <p class="section-sub">
+    Goals can grow and change as I continue my journey.
+  </p>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="icon">🇯🇵</div>
+      <h3>Japanese Language</h3>
+      <p>
+        Continue improving Japanese and reach higher language levels.
       </p>
+    </div>
 
-      <div class="timeline">
-
-        <div class="step">
-          <div class="step-icon">🎓</div>
-          <h3>HSC</h3>
-          <p>Education completed</p>
-        </div>
-
-        <div class="step">
-          <div class="step-icon">🇯🇵</div>
-          <h3>Japanese</h3>
-          <p>Learning Japanese</p>
-        </div>
-
-        <div class="step">
-          <div class="step-icon">📚</div>
-          <h3>New Skills</h3>
-          <p>Building practical skills</p>
-        </div>
-
-        <div class="step">
-          <div class="step-icon">✈️</div>
-          <h3>Future</h3>
-          <p>Working toward Japan & career goals</p>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- GOALS -->
-
-    <section id="goals">
-
-      <div class="eyebrow">My Goals</div>
-      <h2>Where I'm Heading</h2>
-
-      <p class="section-sub">
-        Goals can grow and change as I continue my journey.
+    <div class="card">
+      <div class="icon">🌏</div>
+      <h3>Japan</h3>
+      <p>
+        Explore future study, work and career opportunities.
       </p>
+    </div>
 
-      <div class="grid">
-
-        <div class="card">
-          <div class="icon">🇯🇵</div>
-          <h3>Japanese Language</h3>
-          <p>
-            Continue improving Japanese and reach higher language levels.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="icon">🌏</div>
-          <h3>Japan</h3>
-          <p>
-            Explore future study, work and career opportunities.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="icon">🚀</div>
-          <h3>Personal Growth</h3>
-          <p>
-            Become more confident, disciplined, independent and capable.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="icon">💡</div>
-          <h3>Future</h3>
-          <p>
-            Build useful skills and create better opportunities.
-          </p>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- PROJECTS -->
-
-    <section id="projects">
-
-      <div class="eyebrow">Projects</div>
-      <h2>Ideas & Projects</h2>
-
-      <p class="section-sub">
-        Things I'm interested in building and exploring.
+    <div class="card">
+      <div class="icon">🚀</div>
+      <h3>Personal Growth</h3>
+      <p>
+        Become more confident, disciplined and independent.
       </p>
+    </div>
 
-      <div class="grid">
-
-        <div class="card">
-          <div class="icon">🌱</div>
-          <h3>Seed Business</h3>
-          <p>
-            A future online business idea focused on seeds and useful products.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="icon">🗾</div>
-          <h3>Japanese Learning</h3>
-          <p>
-            Documenting my Japanese learning journey and progress.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="icon">✈️</div>
-          <h3>Travel</h3>
-          <p>
-            Exploring new places, cultures and future travel experiences.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="icon">💻</div>
-          <h3>Web & Technology</h3>
-          <p>
-            Learning how websites and modern digital tools work.
-          </p>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- CONTACT -->
-
-    <section id="contact" class="contact">
-
-      <div class="eyebrow">Get In Touch</div>
-
-      <h2>Let's Connect</h2>
-
-      <p class="section-sub">
-        Feel free to connect with me through social media or email.
+    <div class="card">
+      <div class="icon">💡</div>
+      <h3>Future</h3>
+      <p>
+        Build useful skills and create better opportunities.
       </p>
+    </div>
 
-      <div class="buttons">
+  </div>
 
-        <a class="btn primary"
-           href="mailto:mdranatoday1@gmail.com">
-          ✉️ Email Me
-        </a>
-
-        <a class="btn"
-           href="https://www.facebook.com/share/1EMh3kju32/"
-           target="_blank">
-          📘 Facebook
-        </a>
-
-        <a class="btn"
-           href="https://www.instagram.com/abir_hasan_rana99"
-           target="_blank">
-          📷 Instagram
-        </a>
-
-      </div>
-
-    </section>
-
-  </main>
+</section>
 
 
-  <footer>
-    © 2026 Abir Hasan Rana. All rights reserved.
-    <br>
-    Dream • Learn • Grow • Build
-  </footer>
+<!-- PROJECTS -->
+
+<section id="projects">
+
+  <div class="eyebrow">Projects</div>
+
+  <h2>Ideas & Projects</h2>
+
+  <p class="section-sub">
+    Things I'm interested in building and exploring.
+  </p>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="icon">🌱</div>
+      <h3>Seed Business</h3>
+      <p>
+        A future online business idea focused on seeds and useful products.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🗾</div>
+      <h3>Japanese Learning</h3>
+      <p>
+        Documenting my Japanese learning journey and progress.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">✈️</div>
+      <h3>Travel</h3>
+      <p>
+        Exploring new places, cultures and future experiences.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">💻</div>
+      <h3>Web & Technology</h3>
+      <p>
+        Learning websites and modern digital tools.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact" class="contact">
+
+  <div class="eyebrow">Get In Touch</div>
+
+  <h2>Let's Connect</h2>
+
+  <p class="section-sub">
+    Feel free to connect with me through social media or email.
+  </p>
+
+  <div class="buttons">
+
+    <a class="btn primary"
+       href="mailto:mdranatoday1@gmail.com">
+       ✉️ Email Me
+    </a>
+
+    <a class="btn"
+       href="https://www.facebook.com/share/1EMh3kju32/"
+       target="_blank">
+       📘 Facebook
+    </a>
+
+    <a class="btn"
+       href="https://www.instagram.com/abir_hasan_rana99"
+       target="_blank">
+       📷 Instagram
+    </a>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<footer>
+  © 2026 Abir Hasan Rana
+  <br>
+  Dream • Learn • Grow • Build
+</footer>
 
 </body>
 </html>
